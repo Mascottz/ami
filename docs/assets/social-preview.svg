@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="title description">
+  <title id="title">Àmì, a local-first writing tool</title>
+  <desc id="description">I keep Hausa, Igbo, and Nigerian Pidgin close to home, with optional spelling and diacritic support.</desc>
+  <rect width="1280" height="640" fill="#F8F5EE" />
+  <path d="M72 80h48M72 80v48M1208 560h-48M1208 560v-48" fill="none" stroke="#D9D4E3" stroke-width="2" />
+  <circle cx="73" cy="82" r="5" fill="#8B83C8" />
+  <text x="94" y="89" fill="#4D6476" font-family="DejaVu Sans Mono" font-size="16">MY LOCAL-FIRST WRITING TOOL</text>
+  <text x="68" y="266" fill="#211D35" font-family="DejaVu Serif" font-size="168">Àmì</text>
+  <path d="M76 302h100" fill="none" stroke="#8B83C8" stroke-width="5" />
+  <text x="76" y="370" fill="#211D35" font-family="DejaVu Serif" font-size="35">I keep Hausa, Igbo, and</text>
+  <text x="76" y="418" fill="#211D35" font-family="DejaVu Serif" font-size="35">Nigerian Pidgin close to home.</text>
+  <path d="M76 475h570" fill="none" stroke="#D9D4E3" stroke-width="2" />
+  <text x="76" y="520" fill="#4D6476" font-family="DejaVu Sans Mono" font-size="15">HAUSA</text>
+  <text x="76" y="550" fill="#706B7C" font-family="DejaVu Sans Mono" font-size="14">HA</text>
+  <path d="M226 495v66" fill="none" stroke="#D9D4E3" stroke-width="2" />
+  <text x="258" y="520" fill="#4D6476" font-family="DejaVu Sans Mono" font-size="15">IGBO</text>
+  <text x="258" y="550" fill="#706B7C" font-family="DejaVu Sans Mono" font-size="14">IG</text>
+  <path d="M388 495v66" fill="none" stroke="#D9D4E3" stroke-width="2" />
+  <text x="420" y="520" fill="#4D6476" font-family="DejaVu Sans Mono" font-size="15">NIGERIAN PIDGIN</text>
+  <text x="420" y="550" fill="#706B7C" font-family="DejaVu Sans Mono" font-size="14">PCM / DESCRIPTIVE</text>
+  <path d="M746 84v472" fill="none" stroke="#D9D4E3" stroke-width="2" />
+  <path d="M806 146h90M806 146v90M1168 146h-90M1168 146v90M806 468h90M806 468v-90M1168 468h-90M1168 468v-90" fill="none" stroke="#8B83C8" stroke-width="2" />
+  <circle cx="987" cy="306" r="150" fill="none" stroke="#D9D4E3" stroke-width="2" />
+  <circle cx="987" cy="306" r="111" fill="#F3F0E8" />
+  <circle cx="1096" cy="197" r="8" fill="#D5E58C" />
+  <text x="880" y="292" fill="#211D35" font-family="DejaVu Serif" font-size="60">ɓ ɗ ƙ ƴ</text>
+  <text x="897" y="366" fill="#6F8FA6" font-family="DejaVu Serif" font-size="55">ị ọ ụ</text>
+  <text x="806" y="520" fill="#706B7C" font-family="DejaVu Sans Mono" font-size="14">RUST  /  WASM  /  JULIA  /  CUE</text>
+  <path d="M806 542h310" fill="none" stroke="#D9D4E3" stroke-width="2" />
+  <circle cx="1141" cy="542" r="5" fill="#8B83C8" />
+</svg>

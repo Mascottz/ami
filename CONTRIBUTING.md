@@ -1,6 +1,6 @@
 # My contributing notes
 
-I welcome small, evidence-led changes that make Àmì more useful without making its claims bigger than its data.
+I welcome small, evidence-led changes that help me make Àmì more useful without outgrowing my data.
 
 ## My local checks
 

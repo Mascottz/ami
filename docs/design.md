@@ -1,6 +1,6 @@
 # My design note for Àmì
 
-I wrote the design system before I built a screen, then approved this direction before implementation. I have now built the first responsive writing screen from these rules. I have not made a social preview yet, and I keep every visual detail tied to Àmì's own palette and typography.
+I wrote the design system before I built a screen, then approved this direction before implementation. I have now built the first responsive writing screen and a 1280 by 640 social preview from my design rules. I keep every visual detail tied to Àmì's own palette and typography.
 
 ## My visual direction
 
@@ -39,7 +39,9 @@ I make keyboard navigation work from the first version. I give focus a visible o
 
 I built one focused writing surface with a quiet language switch, a large serif invitation, and a narrow monospace strip for language and corpus evidence. I separate regions with open rules and offset margins rather than cards. I keep typed text and suggestions on the same page so my local-first promise stays obvious. I disable browser spellcheck in the writing area so I never draw a red line under descriptive Pidgin text.
 
-I keep this note as the source for my HTML and CSS. I have not made social preview artwork yet.
+I keep this note as the source for my HTML, CSS, and social preview artwork. I keep the editable [SVG](assets/social-preview.svg) beside my upload-ready [PNG](assets/social-preview.png), and I show the preview below.
+
+![I show Àmì with Hausa hooks, Igbo subdots, and Nigerian Pidgin in my social preview.](assets/social-preview.png)
 
 ## My references
 

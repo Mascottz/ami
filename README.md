@@ -45,6 +45,7 @@ I verify the pinned source checksums and Julia output with `node scripts/verify-
 - [My corpus notes](docs/corpus.md)
 - [My data notice](data/NOTICE.md)
 - [My pinned corpus manifest](corpus/manifest.json)
+- [My launch kit drafts](docs/launch/README.md)
 
 ## My license
 

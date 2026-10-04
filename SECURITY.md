@@ -6,7 +6,7 @@ I treat local text handling, the WebAssembly boundary, the static server, and co
 
 I have not published the GitHub repository yet, and I do not have a verified private reporting address in this checkout. I will enable GitHub private vulnerability reporting before I publish a public release. I cannot promise a confidential intake channel from this repository until I enable private reporting.
 
-I do not put tokens, private keys, or personal writing in a public issue. I do not request credentials through chat. I never store or commit a credential. I use a secure temporary credential path for a single push and clear it immediately after that push.
+I do not put tokens, private keys, or personal writing in a public issue. I do not request credentials through chat. I never store or commit a credential. I use a secure temporary credential path for one push and clear the temporary credential immediately afterward.
 
 ## My review scope
 

@@ -10,7 +10,7 @@ const manifest = JSON.parse(await readFile(manifestPath, 'utf8'));
 
 for (const source of manifest.sources) {
   const response = await fetch(source.apiUrl, {
-    headers: { 'user-agent': 'Ami/0.1 (revision-pinned corpus intake)' },
+    headers: { 'user-agent': 'Àmì/0.1 (revision-pinned corpus intake)' },
     signal: AbortSignal.timeout(30_000),
   });
   if (!response.ok) {
