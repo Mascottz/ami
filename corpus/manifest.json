@@ -1,0 +1,102 @@
+{
+  "recordedOn": "2026-10-04",
+  "retrieval": {
+    "method": "MediaWiki Action API",
+    "parameters": "action=query, prop=extracts|revisions, revids=<pinned revision>, rvprop=ids|timestamp, rvslots=main, explaintext=1, format=json, formatversion=2",
+    "savedFormat": "UTF-8 plaintext extract, without added newline",
+    "rawFilesInGit": false
+  },
+  "sources": [
+    {
+      "code": "ha",
+      "language": "Hausa",
+      "project": "Hausa Wikipedia",
+      "title": "Harshen Hausa",
+      "pageId": 8699,
+      "revisionId": 873901,
+      "revisionDate": "2026-07-01T21:59:56Z",
+      "sourceUrl": "https://ha.wikipedia.org/w/index.php?oldid=873901",
+      "apiUrl": "https://ha.wikipedia.org/w/api.php?action=query&prop=extracts%7Crevisions&revids=873901&rvprop=ids%7Ctimestamp&rvslots=main&explaintext=1&format=json&formatversion=2",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "licenseBasis": "I use the revision's post-2023-06-07 contribution license.",
+      "attribution": "I attribute the pinned text to Harshen Hausa on Hausa Wikipedia, revision 873901, and link to the revision history through the pinned URL.",
+      "sha256Utf8Plaintext": "59b19868bac846bd4747b51207b4d91ac639383f96eeee81526c32f57fdcd209",
+      "localRawPath": "corpus/raw/ha-873901.txt",
+      "currentDemoUse": "I use selected, source-tagged words in data/demo-lexicon.tsv; I make no trained-language-model claim from the small extract.",
+      "transformations": [
+        "I requested the pinned revision by ID.",
+        "I saved the API plaintext extract as UTF-8 without adding a newline.",
+        "I keep the raw file outside Git.",
+        "I retain Hausa diacritics and normalize words to NFC in my Julia statistics step."
+      ],
+      "byteLengthUtf8": 3562
+    },
+    {
+      "code": "ig",
+      "language": "Igbo",
+      "project": "Igbo Wikipedia",
+      "title": "Asụsụ Igbo",
+      "pageId": 5212,
+      "revisionId": 97975,
+      "revisionDate": "2022-09-29T12:34:13Z",
+      "sourceUrl": "https://ig.wikipedia.org/w/index.php?oldid=97975",
+      "apiUrl": "https://ig.wikipedia.org/w/api.php?action=query&prop=extracts%7Crevisions&revids=97975&rvprop=ids%7Ctimestamp&rvslots=main&explaintext=1&format=json&formatversion=2",
+      "license": "CC BY-SA 3.0 Unported",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "licenseBasis": "I use the revision's pre-2023-06-07 contribution license; older edits remain under CC BY-SA 3.0.",
+      "attribution": "I attribute the pinned text to Asụsụ Igbo on Igbo Wikipedia, revision 97975, and link to the revision history through the pinned URL.",
+      "sha256Utf8Plaintext": "532801bba82dc92024892d0a32f19d1824e8f1e3360ad9a952658ee86309117c",
+      "localRawPath": "corpus/raw/ig-97975.txt",
+      "currentDemoUse": "I use selected, source-tagged words in data/demo-lexicon.tsv; I make no trained-language-model claim from the small extract.",
+      "transformations": [
+        "I requested the pinned revision by ID.",
+        "I saved the API plaintext extract as UTF-8 without adding a newline.",
+        "I keep the raw file outside Git.",
+        "I retain Igbo underdots and tone marks and normalize words to NFC in my Julia statistics step."
+      ],
+      "byteLengthUtf8": 2113
+    },
+    {
+      "code": "pcm",
+      "language": "Nigerian Pidgin",
+      "project": "Nigerian Pidgin Wikipedia",
+      "title": "Naijá langwej",
+      "pageId": 644,
+      "revisionId": 36150,
+      "revisionDate": "2026-08-01T22:54:12Z",
+      "sourceUrl": "https://pcm.wikipedia.org/w/index.php?oldid=36150",
+      "apiUrl": "https://pcm.wikipedia.org/w/api.php?action=query&prop=extracts%7Crevisions&revids=36150&rvprop=ids%7Ctimestamp&rvslots=main&explaintext=1&format=json&formatversion=2",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "licenseBasis": "I use the revision's post-2023-06-07 contribution license.",
+      "attribution": "I attribute the pinned text to Naijá langwej on Nigerian Pidgin Wikipedia, revision 36150, and link to the revision history through the pinned URL.",
+      "sha256Utf8Plaintext": "ad8c360711ae1ac950eda3bcd155744b08e833d1d0c2434044411f26d40d35f0",
+      "localRawPath": "corpus/raw/pcm-36150.txt",
+      "currentDemoUse": "I use selected, source-tagged words in data/demo-lexicon.tsv; I make no trained-language-model claim from the small extract.",
+      "transformations": [
+        "I requested the pinned revision by ID.",
+        "I saved the API plaintext extract as UTF-8 without adding a newline.",
+        "I keep the raw file outside Git.",
+        "I retain the source spelling and normalize words to NFC in my Julia statistics step."
+      ],
+      "byteLengthUtf8": 292
+    }
+  ],
+  "licenseContext": {
+    "transitionDate": "2023-06-07",
+    "reference": "https://creativecommons.org/2023/06/29/wikipedia-moves-to-cc-4-0-licenses/",
+    "summary": "I assign the license per pinned revision, not per current wiki hostname."
+  },
+  "derivedArtifacts": [
+    {
+      "path": "data/wiki-frequencies.tsv",
+      "generatedOn": "2026-10-04",
+      "sha256Utf8": "2f9c4f98acb55c12deed6193e1852ca8226e394cb2cd3be4b216738348a5310a",
+      "uniqueWordRows": 469,
+      "wordTokenCount": 965,
+      "transformation": "I normalize extracted text to NFC, lowercase Unicode letter-plus-mark tokens, count each token by language and pinned revision, and sort by language, revision, descending count, then word.",
+      "use": "I use the counts only to rank selected source-tagged demo words; I do not treat one article per language as representative."
+    }
+  ]
+}

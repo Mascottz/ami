@@ -1,0 +1,45 @@
+{
+  "languages": [
+    {
+      "code": "ha",
+      "label": "Hausa",
+      "hooked": [
+        {"key": "b", "lower": "ɓ", "upper": "Ɓ", "feature": "hook"},
+        {"key": "d", "lower": "ɗ", "upper": "Ɗ", "feature": "hook"},
+        {"key": "k", "lower": "ƙ", "upper": "Ƙ", "feature": "hook"},
+        {"key": "y", "lower": "ƴ", "upper": "Ƴ", "feature": "hook"}
+      ],
+      "subdots": [],
+      "overdots": [],
+      "toneSamples": ["à", "á", "â"],
+      "tonePolicy": "optional",
+      "pidginPolicy": "not-applicable"
+    },
+    {
+      "code": "ig",
+      "label": "Igbo",
+      "hooked": [],
+      "subdots": [
+        {"key": "i", "lower": "ị", "upper": "Ị", "feature": "subdot"},
+        {"key": "o", "lower": "ọ", "upper": "Ọ", "feature": "subdot"},
+        {"key": "u", "lower": "ụ", "upper": "Ụ", "feature": "subdot"}
+      ],
+      "overdots": [
+        {"key": "n", "lower": "ṅ", "upper": "Ṅ", "feature": "overdot"}
+      ],
+      "toneSamples": ["á", "à", "í", "ì", "ị́", "ị̀", "ọ́", "ọ̀", "ụ́", "ụ̀"],
+      "tonePolicy": "optional",
+      "pidginPolicy": "not-applicable"
+    },
+    {
+      "code": "pcm",
+      "label": "Naija Pidgin",
+      "hooked": [],
+      "subdots": [],
+      "overdots": [],
+      "toneSamples": [],
+      "tonePolicy": "none",
+      "pidginPolicy": "descriptive"
+    }
+  ]
+}

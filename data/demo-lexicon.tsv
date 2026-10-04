@@ -1,0 +1,31 @@
+# I keep this small smoke-test lexicon separate from my Julia corpus output.
+# I use: code<TAB>weight<TAB>kind<TAB>surface<TAB>source<TAB>note
+ha	40	word	Harshen	wiki:ha:873901	I took this word from my pinned Hausa Wikipedia revision.
+ha	35	word	Hausa	wiki:ha:873901	I took this word from my pinned Hausa Wikipedia revision.
+ha	24	word	ɗaya	wiki:ha:873901	I took this word from my pinned Hausa Wikipedia revision.
+ha	18	word	ƙasar	wiki:ha:873901	I took this word from my pinned Hausa Wikipedia revision.
+ha	14	word	Najeriya	wiki:ha:873901	I took this word from my pinned Hausa Wikipedia revision.
+ha	9	word	Harsunan	wiki:ha:873901	I took this word from my pinned Hausa Wikipedia revision.
+ha	8	word	ƴan	wiki:ha:873901	I took this word from my pinned Hausa Wikipedia revision.
+ha	7	word	larabci	wiki:ha:873901	I took this word from my pinned Hausa Wikipedia revision.
+ha	6	word	ɓata	manual:orthography	I use this form to exercise my hooked-letter path.
+ha	6	word	ƙasa	manual:orthography	I use this form to exercise my hooked-letter path.
+ig	38	word	Asụsụ	wiki:ig:97975	I took this word from my pinned Igbo Wikipedia revision.
+ig	32	word	Igbo	wiki:ig:97975	I took this word from my pinned Igbo Wikipedia revision.
+ig	22	word	ndị	wiki:ig:97975	I took this word from my pinned Igbo Wikipedia revision.
+ig	18	word	Naijiria	wiki:ig:97975	I took this word from my pinned Igbo Wikipedia revision.
+ig	12	word	ọwụwa	wiki:ig:97975	I took this word from my pinned Igbo Wikipedia revision.
+ig	11	word	ọma	wiki:ig:97975	I took this word from my pinned Igbo Wikipedia revision.
+ig	9	word	anyị	manual:orthography	I use this form to exercise my Igbo underdot path.
+ig	8	word	ụlọ	manual:orthography	I use this form to exercise my subdot path.
+pcm	24	word	Naijá	wiki:pcm:36150	I took this word from my pinned Pidgin Wikipedia revision.
+pcm	17	word	langwej	wiki:pcm:36150	I took this word from my pinned Pidgin Wikipedia revision.
+pcm	13	word	pijin	wiki:pcm:36150	I took this word from my pinned Pidgin Wikipedia revision.
+pcm	11	word	wey	wiki:pcm:36150	I took this word from my pinned Pidgin Wikipedia revision.
+pcm	10	word	dey	wiki:pcm:36150	I took this word from my pinned Pidgin Wikipedia revision.
+pcm	9	word	spik	wiki:pcm:36150	I took this word from my pinned Pidgin Wikipedia revision.
+pcm	9	word	pipul	wiki:pcm:36150	I took this word from my pinned Pidgin Wikipedia revision.
+pcm	8	word	for	wiki:pcm:36150	I took this word from my pinned Pidgin Wikipedia revision.
+pcm	7	word	an	wiki:pcm:36150	I took this word from my pinned Pidgin Wikipedia revision.
+pcm	16	phrase	how far?	first-party:prompt	I keep this Pidgin greeting as a suggestion, not a correction.
+pcm	14	phrase	I dey fine.	manual:phrase	I include this three-word Pidgin reply as a descriptive smoke test.
