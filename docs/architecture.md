@@ -1,67 +1,67 @@
-# My architecture proposal
+# My architecture notes
 
-I am proposing the stack and boundaries here before I build a screen. I want approval on this architecture before I turn the design note into a browser demo. I am describing a plan, not claiming that any component already exists.
+I approved the stack and boundaries before I built the screen. I now have a working first slice across CUE, Julia, Rust, WebAssembly, Node, and plain browser code. I keep this page honest about what runs and what remains a target.
 
 ## My product boundary
 
-I build Àmì as a local-first orthography engine for Hausa (`ha`), Igbo (`ig`), and Nigerian Pidgin (`pcm`). I keep keystroke processing on the device. I send no typed text to a service, store no typing history, and add no analytics.
+I build Àmì as a local-first orthography engine for Hausa (`ha`), Igbo (`ig`), and Nigerian Pidgin (`pcm`). I keep keystroke processing in the tab. I send no typed text to a service, store no typing history, and add no analytics.
 
-I keep the first demo small enough to run with Node and no account. I plan to include a reproducible WebAssembly build with the demo assets so a fresh checkout can start without installing Rust, Julia, or CUE. I keep toolchains and dependency caches out of the repository.
+I run the static demo with `node server.mjs`. I compile WebAssembly on first run when the pinned Rust toolchain is available; I use no npm package, remote font, CDN script, or runtime service. I keep toolchains and dependency caches outside the repository.
 
-## My stack, with reasons
+## My runtime core
 
-### Rust
+I use Rust for the runtime core. I build a grapheme-level prefix trie, bounded Damerau-Levenshtein matching, language-table diacritic assistance, phrase matching, and a data-driven form-family lookup. I compile the same crate for native tests and `wasm32-unknown-unknown`. I call a small C ABI from plain JavaScript, so I do not need a JavaScript package to load the core.
 
-I use Rust for the runtime core: a grapheme-aware prefix trie, bounded fuzzy matching, small language-specific morphology rules, and candidate generation. I compile the same core for native tests and WebAssembly; I keep browser typing local and avoid a network round trip.
+I normalize to NFC and compare extended grapheme clusters rather than bytes or Unicode scalar values. I use the [Unicode grapheme-boundary standard](https://unicode.org/reports/tr29/), the [Unicode normalization standard](https://unicode.org/reports/tr15/), the [Rust grapheme-segmentation crate](https://crates.io/crates/unicode-segmentation), and the [Rust normalization crate](https://crates.io/crates/unicode-normalization) as implementation references.
 
-I set a warm-tab target of under 10 milliseconds at the 95th percentile for a suggestion pass on the planned demo lexicon. I treat that number as a target until I publish a repeatable benchmark with hardware and corpus size.
+I keep Hausa hooked letters, Igbo subdots, tone-marked graphemes, and composed or decomposed input in native, JavaScript, and WebAssembly tests. I never assume ASCII for text processing. I return Unicode candidates without stripping distinctions from stored words or replacing text automatically.
 
-I normalize to NFC and walk extended grapheme clusters rather than bytes or Unicode scalar values. I use the [Unicode grapheme-boundary standard](https://unicode.org/reports/tr29/), the [Unicode normalization standard](https://unicode.org/reports/tr15/), the [Rust grapheme-segmentation crate](https://crates.io/crates/unicode-segmentation), and the [Rust normalization crate](https://crates.io/crates/unicode-normalization) as implementation references.
+I include one reference-checked Hausa family, `gida` and `gidaje`, in my current data. I have not built full morphology for Hausa, Igbo, or Nigerian Pidgin; I add a form family only with a cited and reviewed source.
 
-I keep hooked letters, subdots, combining tone marks, and composed or decomposed forms in native and WebAssembly tests from the first engine commit. I never assume ASCII for text processing. I keep language-specific aliases for plain-keyboard input, then return the correct Unicode spelling without stripping distinctions from stored words.
+## My performance target
 
-### Julia
+I set a warm-tab target below 10 milliseconds at p95 for a suggestion pass. I wrote [`analysis/benchmark.mjs`](../analysis/benchmark.mjs) and measured 1,000 warmed Rust-to-Wasm calls on an Intel Xeon Processor at 2.60 GHz with Node 24.18.0, 29 demo seed entries, 469 frequency rows, and a 463,894-byte Wasm file. My latest local run measured a 0.026 ms median, 0.076 ms p95, 0.202 ms p99, and 0.951 ms maximum. I did not measure browser rendering, mobile hardware, or end-to-end keyboard latency, so I keep the browser target unverified.
 
-I use Julia for offline corpus statistics, not for the keystroke path. I count grapheme, letter, and word frequencies from licensed text snapshots, build deterministic rank tables, and export compact UTF-8 data for Rust. I keep the ranking recipe visible and reproducible, with no Julia package dependencies in the first release.
+## My offline statistics
 
-I use Julia's [Unicode and string documentation](https://docs.julialang.org/en/v1/manual/strings/) as the reference for text handling. I pin the Julia version in the project and CI rather than relying on whichever local version happens to be installed.
+I use Julia 1.13.1 for offline word counts, not for the keystroke path. I count Unicode letter-plus-mark tokens from one pinned Wikipedia article per language, retain the source spellings, and export deterministic UTF-8 counts. I use the counts only as a small ranking signal for selected demo words; I never present the table as representative language frequencies.
 
-### CUE
+I use Julia's [Unicode and string documentation](https://docs.julialang.org/en/v1/manual/strings/) as the reference for text handling. I keep my statistics step free of package dependencies.
 
-I use CUE for language-table data and validation. I plan to keep the tables for Hausa hooked letters, Igbo subdots, and supported tone marks in checked-in data, then validate required fields and allowed inventories with `cue vet` before a build or release.
+## My language tables
 
-I pair CUE schema checks with Rust Unicode tests because I need both structural validation and grapheme-aware validation. I use the [CUE validation guide](https://cuelang.org/docs/concept/how-cue-enables-data-validation/) as the schema reference. I do not put runtime language logic in CUE.
+I use CUE 0.17.0 to validate checked-in inventories for Hausa hooks, Igbo subdots and overdots, tone samples, and the descriptive Pidgin policy. I pair structural checks with Rust's NFC and grapheme checks. I use the [CUE validation guide](https://cuelang.org/docs/concept/how-cue-enables-data-validation/) as the schema reference. I do not put runtime language logic in CUE.
 
-### Node with no runtime packages
+## My static demo
 
-I use Node's built-in HTTP and file-system modules to serve the static demo. I write the page in plain HTML, CSS, and JavaScript, and I add no package dependency, framework, remote font, CDN script, or analytics call.
+I use Node's built-in HTTP and file-system modules to serve plain HTML, CSS, JavaScript, and WebAssembly. I let `node server.mjs` compile the Wasm file when the artifact is missing or stale. I add no runtime package, framework, remote font, CDN script, or analytics call. I use Node's [built-in HTTP API](https://nodejs.org/api/http.html) and [built-in test runner](https://nodejs.org/api/test.html) as runtime references.
 
-I run the compiled WebAssembly core directly in the browser. I use Node only as the tiny local file server, so typed text stays inside the tab. I use Node's [built-in HTTP API](https://nodejs.org/api/http.html) and [built-in test runner](https://nodejs.org/api/test.html) as the runtime references.
+I measured the local server's first startup at about three seconds with a warmed Cargo cache; the Wasm compile itself took 1.87 seconds in that run. I have not measured a clean-machine toolchain download or the browser's first load.
 
-## My data path
+## My data path and provenance
 
-I keep CUE-validated language tables separate from corpus text. I record a source URL, exact upstream revision or dump date, checksum, license, attribution note, and transformation steps for every corpus snapshot. I keep raw dumps out of Git and check in only compact derived data when the source terms allow redistribution.
+I keep CUE-validated language tables separate from corpus text. I record a source URL, exact revision, date, checksum, license, attribution, and transformations in [`corpus/manifest.json`](../corpus/manifest.json). I keep raw extracts outside Git and check each file's SHA-256 before I let Julia read the text.
 
-I use Julia to produce deterministic frequency tables from approved snapshots. I build a trie and morphology rules in Rust, then rank candidates from the generated counts, prefix fit, and bounded grapheme-level edit distance. I expose the score or a short evidence note in the demo rather than pretending a suggestion is a universal correction.
+I use Julia to make a deterministic count table from my pinned extracts. I select a small subset for my demo lexicon, and Rust uses the source-pinned counts to rank the selected entries. I show a short evidence note and source tag; I do not show a made-up confidence score or present a suggestion as a universal correction.
 
-I keep the Pidgin model descriptive. I preserve observed variants, surface nearby forms as optional suggestions, and never mark a Pidgin spelling as wrong. I do not force an automatic replacement in any language.
+I keep data licensing separate from my Apache-2.0 software license. I record the source-specific terms and attribution in [`data/NOTICE.md`](../data/NOTICE.md). I have not ingested open parallel text; I keep Tatoeba, MAFAND-MT, Okwu, and IgboAPI decisions in [my corpus notes](corpus.md).
 
-## My Unicode test floor
+I keep Pidgin descriptive. I preserve the demo spelling and phrase choices as optional suggestions, never mark Pidgin input wrong, and never force a replacement.
 
-I pin expected behavior by language before I add more data. I test Hausa `ɓ`, `ɗ`, `ƙ`, and `ƴ`; Igbo `ị`, `ọ`, and `ụ`; combining tone marks; composed and decomposed equivalents; case handling; and cursor-safe grapheme boundaries. I test `how far` as a Pidgin phrase and keep distinct Pidgin spellings eligible for descriptive suggestions.
+## My test floor
 
-I run Rust unit tests, Julia tests, CUE validation fixtures, Node's built-in test runner, and a WebAssembly build in continuous integration. I pin language toolchains and lock Rust dependencies. I keep CI logs free of corpus text and keystroke samples.
+I run Rust unit tests for Hausa `ɓ`, `ɗ`, `ƙ`, and `ƴ`; Igbo `ị`, `ọ`, and `ụ`; tone-marked graphemes; composed and decomposed equivalents; case handling; morphology; whole-word suggestions; and Pidgin phrases. I run Julia Unicode-frequency tests, CUE rejection fixtures for hooked letters and subdots, and Node tests against the compiled WebAssembly core, grapheme-safe cursor helpers, and the diacritic fallback without `Intl.Segmenter`.
 
-## My demo and repository budget
+I have added a pinned workflow at [`.github/workflows/ci.yml`](../.github/workflows/ci.yml). I have not watched the workflow pass on GitHub because I have not published the repository yet.
 
-I plan a single command, `node server.mjs`, for the demo. I include only the small, reproducible WebAssembly module and compact demo data needed for that command. I keep Rust, Julia, CUE, and Node toolchains in local or CI caches, never in the repository.
+## My first-run budget
 
-I plan to keep the first-time demo path below five minutes on a machine with Node installed. I will measure that path before I call the path done. I have not built the server, engine, language tables, or screen yet.
+I keep `node server.mjs` as the one-command demo target. I let my demo command build the Rust WebAssembly module if needed, using a pinned toolchain and the lockfile. I measured a warmed local start below five minutes; I have not measured a clean machine or a first-time toolchain install.
 
 ## My pinned toolchains
 
-I pin Rust 1.99.0, Julia 1.13.1, CUE 0.17.0, and Node 24.18.0, based on the official releases current on 2026-10-04. I keep exact versions in the repository's small text pins and CI; I keep every binary and package cache outside the repository.
+I pin Rust 1.99.0, Julia 1.13.1, CUE 0.17.0, and Node 24.18.0. I keep exact versions in small text files and keep binary downloads, package caches, and build output outside Git.
 
 ## My research links
 
-I keep corpus provenance and licensing notes in [my corpus page](corpus.md). I use the official [Wikimedia reuse terms](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use), the [Tatoeba download and license page](https://tatoeba.org/en/downloads), and each upstream dataset's own license page before I ingest text.
+I keep corpus provenance and licensing notes in [my corpus page](corpus.md). I use the official [Wikimedia reuse terms](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use), the [Creative Commons notice on Wikimedia's 2023 license change](https://creativecommons.org/2023/06/29/wikipedia-moves-to-cc-4-0-licenses/), the [Tatoeba download and license page](https://tatoeba.org/en/downloads), and each upstream dataset's own license page before I ingest more text.

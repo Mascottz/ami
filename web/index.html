@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f5ee">
+    <meta name="description" content="I keep Hausa, Igbo, and Nigerian Pidgin writing close to home.">
+    <title>Àmì | I write with care</title>
+    <link rel="stylesheet" href="/style.css">
+    <script type="module" src="/app.mjs"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="masthead">
+        <a class="wordmark" href="/" aria-label="Àmì home">Àmì<span class="wordmark-mark" aria-hidden="true"></span></a>
+        <p class="masthead-note">I keep my words close.</p>
+        <div class="engine-lamp" aria-live="polite">
+          <span class="lamp-dot" aria-hidden="true"></span>
+          <div>
+            <span class="mono-label">LOCAL CORE / WEBASSEMBLY</span>
+            <p id="engine-status">I load my local engine.</p>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div class="intro-copy">
+            <p class="eyebrow">I write with care</p>
+            <h1 id="page-title">My words, <em>in my own shape.</em></h1>
+            <p class="intro-deck">I offer nearby spellings, whole-word suggestions, and a few clear phrase choices for Hausa, Igbo, and Nigerian Pidgin.</p>
+          </div>
+          <aside class="local-note" aria-label="My local-first promise">
+            <p class="mono-label">MY TEXT STAYS HERE</p>
+            <p>I keep every keystroke in the tab. I do not send my writing to a service.</p>
+            <span class="corner-mark corner-mark-top" aria-hidden="true"></span>
+            <span class="corner-mark corner-mark-bottom" aria-hidden="true"></span>
+          </aside>
+        </section>
+
+        <section class="workbench" aria-label="My writing workspace">
+          <div class="writing-column">
+            <div class="language-header">
+              <p class="eyebrow">I choose a language</p>
+              <span class="mono-label" id="language-code">PCM / DESCRIPTIVE</span>
+            </div>
+            <div class="language-switch" role="group" aria-label="I choose my language">
+              <button class="language-choice" type="button" data-language="ha" aria-pressed="false">
+                <span>Hausa</span><span class="language-code">ha</span>
+              </button>
+              <button class="language-choice" type="button" data-language="ig" aria-pressed="false">
+                <span>Igbo</span><span class="language-code">ig</span>
+              </button>
+              <button class="language-choice is-active" type="button" data-language="pcm" aria-pressed="true">
+                <span>Naijá Pidgin</span><span class="language-code">pcm</span>
+              </button>
+            </div>
+
+            <div class="editor-heading">
+              <label class="eyebrow" for="editor">My writing</label>
+              <span class="mono-label" id="word-count">2 WORDS</span>
+            </div>
+            <div class="editor-wrap">
+              <span class="corner-mark corner-mark-top" aria-hidden="true"></span>
+              <span class="corner-mark corner-mark-bottom" aria-hidden="true"></span>
+              <textarea id="editor" rows="4" spellcheck="false" autocorrect="off" autocapitalize="off" autocomplete="off" aria-describedby="editor-help">how far</textarea>
+            </div>
+            <p class="editor-help" id="editor-help">I keep my text untouched until I choose a suggestion.</p>
+
+            <div class="editor-actions">
+              <button class="text-action" id="load-three-word" type="button">I load my three-word test</button>
+              <button class="text-action text-action-muted" id="clear-writing" type="button">I clear my writing</button>
+            </div>
+
+            <div class="diacritic-section" aria-labelledby="diacritic-heading">
+              <div class="diacritic-heading-row">
+                <p class="eyebrow" id="diacritic-heading">I keep a few letters close</p>
+                <span class="mono-label">ONE GRAPHEME PER KEY</span>
+              </div>
+              <div class="diacritic-keys" id="diacritic-keys" role="group" aria-label="I insert a language letter at my caret"></div>
+              <p class="diacritic-note" id="diacritic-note">I offer Hausa hooked letters and Igbo subdots as nearby choices.</p>
+            </div>
+          </div>
+
+          <aside class="suggestion-column" aria-labelledby="suggestion-heading">
+            <div class="suggestion-heading">
+              <p class="eyebrow">I offer, never impose</p>
+              <h2 id="suggestion-heading">Possible forms<span class="iris-period">.</span></h2>
+              <p class="suggestion-intro" id="language-note">I keep Pidgin descriptive; I never mark a phrase wrong.</p>
+            </div>
+            <ol class="suggestion-list" id="suggestions" aria-live="polite" aria-relevant="additions text"></ol>
+            <p class="empty-state" id="empty-state" hidden>I have no nearby suggestion for this text yet.</p>
+            <div class="scope-note">
+              <span class="scope-number">03</span>
+              <p>I start with three pinned Wikipedia revisions and a small reviewed demo slice. I keep the scope visible.</p>
+              <a class="quiet-link" href="/sources.html">I read my source notes <span aria-hidden="true">↗</span></a>
+            </div>
+          </aside>
+        </section>
+
+        <section class="method-strip" aria-label="My method">
+          <div>
+            <span class="mono-label">I KEEP</span>
+            <p>Hausa hooks, Igbo subdots, and Unicode graphemes intact.</p>
+          </div>
+          <div>
+            <span class="mono-label">I RANK</span>
+            <p>Whole words and phrases with a small, revision-pinned lexicon.</p>
+          </div>
+          <div>
+            <span class="mono-label">I DESCRIBE</span>
+            <p>Pidgin variation without red lines or a right-answer voice.</p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Àmì / I keep the writing local.</p>
+        <p class="mono-label">DEMO 0.1.0 / NO NETWORK REQUESTS FROM THE ENGINE</p>
+      </footer>
+    </div>
+  </body>
+</html>
