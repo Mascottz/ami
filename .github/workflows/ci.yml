@@ -1,0 +1,64 @@
+name: I check Àmì
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    name: I run my pinned checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: I check out the repository
+        uses: actions/checkout@v4
+
+      - name: I read my pinned versions
+        id: versions
+        shell: bash
+        run: |
+          echo "julia=$(cat .julia-version)" >> "$GITHUB_OUTPUT"
+          echo "rust=$(sed -n 's/^channel = \"\([^\"]*\)\"$/\1/p' rust-toolchain.toml)" >> "$GITHUB_OUTPUT"
+          echo "cue=$(cat .cue-version)" >> "$GITHUB_OUTPUT"
+
+      - name: I install my pinned Node version
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+
+      - name: I install my pinned Julia version
+        uses: julia-actions/setup-julia@v2
+        with:
+          version: ${{ steps.versions.outputs.julia }}
+
+      - name: I install my pinned Rust toolchain and WebAssembly target
+        shell: bash
+        run: |
+          rustup toolchain install "${{ steps.versions.outputs.rust }}" --profile minimal --component clippy --component rustfmt --target wasm32-unknown-unknown
+          rustup default "${{ steps.versions.outputs.rust }}"
+          rustup show active-toolchain
+
+      - name: I install and verify CUE
+        shell: bash
+        run: |
+          version="${{ steps.versions.outputs.cue }}"
+          archive="$RUNNER_TEMP/cue_v${version}_linux_amd64.tar.gz"
+          mkdir -p "$RUNNER_TEMP/cue"
+          curl --fail --location --retry 3 "https://github.com/cue-lang/cue/releases/download/v${version}/cue_v${version}_linux_amd64.tar.gz" --output "$archive"
+          echo "e22219a1cb520ab3d660a486ed2222bb7b8e9cb9502a951ce6b8ac668695713f  $archive" | sha256sum --check --status
+          tar -xzf "$archive" -C "$RUNNER_TEMP/cue"
+          echo "$RUNNER_TEMP/cue" >> "$GITHUB_PATH"
+          "$RUNNER_TEMP/cue/cue" version
+
+      - name: I run my Rust, Julia, CUE, and Node tests
+        shell: bash
+        run: scripts/test-all.sh
+
+      - name: I verify my pinned corpus inputs and derived counts
+        run: node scripts/verify-corpus.mjs
