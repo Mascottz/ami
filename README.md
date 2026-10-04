@@ -10,15 +10,19 @@ I want `b` to put Hausa `ɓ` one tap away. I want `o` to offer Igbo `ọ`. I wan
 
 ## What I have built so far
 
-I have written the design, architecture, and corpus research notes for approval. I have not built a browser screen, engine, or trained language model. I have not ingested source text. I treat this README as a promise, not a shipping claim.
+I have approved the design and architecture notes before implementation. I have not built a browser screen, engine, or trained language model yet. I have not ingested external source text. I treat this README as a project promise, not a shipping claim.
 
-## My approval gate
+## My project notes
 
-I am waiting on design and architecture approval before I build a screen. I keep the design system, stack reasoning, corpus sources, and license notes in these files:
+I keep the design system, stack reasoning, corpus sources, and license notes in these files:
 
 - [My design note](docs/design.md)
 - [My architecture proposal](docs/architecture.md)
 - [My corpus notes](docs/corpus.md)
+
+## My license
+
+I license my original code and project documentation under [Apache-2.0](LICENSE). I keep third-party corpus artifacts under separate source-specific terms and notices.
 
 ## My bar
 

@@ -1,6 +1,10 @@
 # I keep local toolchains, caches, and raw corpus material out of Git.
 /target/
+**/target/
 /build/
-/.julia/
 /.cache/
+/.cargo/
+/.rustup/
+/.julia/
 /corpus/raw/
+/corpus/downloads/

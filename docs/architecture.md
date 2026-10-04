@@ -58,6 +58,10 @@ I plan a single command, `node server.mjs`, for the demo. I include only the sma
 
 I plan to keep the first-time demo path below five minutes on a machine with Node installed. I will measure that path before I call the path done. I have not built the server, engine, language tables, or screen yet.
 
+## My pinned toolchains
+
+I pin Rust 1.99.0, Julia 1.13.1, CUE 0.17.0, and Node 24.18.0, based on the official releases current on 2026-10-04. I keep exact versions in the repository's small text pins and CI; I keep every binary and package cache outside the repository.
+
 ## My research links
 
 I keep corpus provenance and licensing notes in [my corpus page](corpus.md). I use the official [Wikimedia reuse terms](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use), the [Tatoeba download and license page](https://tatoeba.org/en/downloads), and each upstream dataset's own license page before I ingest text.

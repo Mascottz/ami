@@ -1,6 +1,6 @@
 # My design note for Àmì
 
-I want the design system approved before I build a screen. I have no screen, component, or social preview yet. I am setting the visual rules first so the product feels like Àmì from the first pixel.
+I wrote the design system before I built a screen, then approved this direction before implementation. I have no screen, component, or social preview yet. I will judge every visual detail against these rules so the product feels like Àmì from the first pixel.
 
 ## My visual direction
 
